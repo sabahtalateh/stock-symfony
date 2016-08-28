@@ -3,4 +3,4 @@
 cd /home/vagrant/app
 composer update
 
-php /home/vagrant/app/bin/console doctrine:migrations:migrate -n
+php /home/vagrant/stock-symfony/bin/console doctrine:migrations:migrate -n
