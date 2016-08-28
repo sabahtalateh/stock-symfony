@@ -9,5 +9,6 @@
 - Измените название базы данных, на то что вы указали в `app/config/parameters.yml` .
 - Выполните `vagrant up`.
 - Выполните `vagrant ssh`.
-- Выполните `php /home/vagrant/app/bin/console stock:load-history`.
+- Выполните `php /home/vagrant/stock-symfony/bin/console stock:load-history` это загрузит историю акций с `Yahoo Finance`.
+- Так-же чтобы каждый день загружать эту историю импортируйте себе в кронтаб файлик `cron` предварительно выставив время его запуска.
 - Зайдите по адресу который.

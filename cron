@@ -1,1 +1,1 @@
-* * * * * /home/vagrant/app/bin/console stock:load-history
+* * * * * /home/vagrant/stock-symfony/bin/console stock:load-history
