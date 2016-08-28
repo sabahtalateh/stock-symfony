@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <services>
+
+        <service class="StockBundle\Core\StockGraphBuilder" id="stock.core.stock_graph_builder">
+            <argument id="doctrine.orm.entity_manager" type="service"/>
+        </service>
+
+        <service id="app.test_listener" class="StockBundle\EventListener\QuoteOperationListener">
+            <argument type="service" id="security.token_storage"/>
+            <argument type="service" id="router"/>
+            <tag name="kernel.event_listener"  event="kernel.request" method="onControllerRequest"/>
+        </service>
+
+        <service class="Faker\Factory" id="faker.factory"/>
+
+        <service class="StockBundle\Core\YahooFinanceApi" id="stock.core.yahoo_finance_api">
+            <argument id="timeout">10</argument>
+        </service>
+
+        <service id="stock.core.stock" class="StockBundle\Core\Stock">
+            <argument type="service" id="stock.core.yahoo_finance_api"/>
+        </service>
+
+    </services>
+</container>

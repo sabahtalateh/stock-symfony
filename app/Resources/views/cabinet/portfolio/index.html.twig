@@ -1,0 +1,41 @@
+{% extends ':cabinet:base.html.twig' %}
+
+{% block body %}
+    <h1>Portfolio list</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for portfolio in portfolios %}
+            <tr>
+                <td><a href="{{ path('portfolio_show', { 'id': portfolio.id }) }}">{{ portfolio.name }}</a></td>
+                <td>{% if portfolio.active %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('portfolio_graph', { 'id': portfolio.id }) }}">view cost graph</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('portfolio_show_quotes', { 'id': portfolio.id }) }}">view quotes</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('portfolio_edit', { 'id': portfolio.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('portfolio_activate', { 'id': portfolio.id }) }}">activate</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('portfolio_new') }}">Create new portfolio</a>
+{% endblock %}

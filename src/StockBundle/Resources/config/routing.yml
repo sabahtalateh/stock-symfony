@@ -1,0 +1,7 @@
+stock_portfolio:
+    resource: "@StockBundle/Resources/config/routing/portfolio.yml"
+    prefix:   /portfolio
+
+stock_homepage:
+    path:     /
+    defaults: { _controller: StockBundle:Default:index }

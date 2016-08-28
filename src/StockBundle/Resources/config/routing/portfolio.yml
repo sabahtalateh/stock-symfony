@@ -1,0 +1,24 @@
+portfolio_index:
+    path:     /
+    defaults: { _controller: "StockBundle:Portfolio:index" }
+    methods:  GET
+
+portfolio_show:
+    path:     /{id}/show
+    defaults: { _controller: "StockBundle:Portfolio:show" }
+    methods:  GET
+
+portfolio_new:
+    path:     /new
+    defaults: { _controller: "StockBundle:Portfolio:new" }
+    methods:  [GET, POST]
+
+portfolio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "StockBundle:Portfolio:edit" }
+    methods:  [GET, POST]
+
+portfolio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "StockBundle:Portfolio:delete" }
+    methods:  DELETE

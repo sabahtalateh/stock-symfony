@@ -1,0 +1,35 @@
+{% extends ':cabinet:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/vis.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div id="visualization"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/vis.min.js') }}"></script>
+
+    <script type="text/javascript">
+        var container = document.getElementById('visualization');
+        var items = [
+            {% for date, total in graph %}
+                { x: '{{ date }}', y: {{ total }} },
+            {% endfor %}
+        ];
+
+        var dataset = new vis.DataSet(items);
+        var options = {
+            start: '{{ startDate }}',
+            end: '{{ endDate }}'
+        };
+        var graph2d = new vis.Graph2d(container, dataset, options);
+    </script>
+
+{% endblock %}

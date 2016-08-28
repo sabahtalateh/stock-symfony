@@ -1,0 +1,37 @@
+{% extends ':cabinet:base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="row">
+        {% for quote in quotes %}
+            <form action="{{ url('quotes_buy') }}" method="POST">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('quotes_buy') }}">
+                <input type="hidden" name="symbol" value="{{ quote.symbol }}">
+                <div class="col-sm-4 table-bordered">
+                    <h2>{{ quote.symbol }}</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">Open: <strong>{{ quote.Open }}</strong></li>
+                        <li class="list-group-item">Change: <strong>{{ quote.Change }}</strong></li>
+                        <li class="list-group-item">Last Trade Price: <strong>{{ quote.LastTradePriceOnly }}</strong>
+                        </li>
+                        <li class="list-group-item">Last Trade Date: <strong>{{ quote.LastTradeDate }}</strong></li>
+                        <li class="list-group-item">Last Trade Time: <strong>{{ quote.LastTradeTime }}</strong></li>
+                        <li class="list-group-item">Days High: <strong>{{ quote.DaysHigh }}</strong></li>
+                        <li class="list-group-item">Days Low: <strong>{{ quote.DaysLow }}</strong></li>
+                        <li class="list-group-item">Volume: <strong>{{ quote.Volume }}</strong></li>
+                    </ul>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label for="amount">Number of quotes</label>
+                            <input type="number" id="amount" name="amount" value="1" min="1" max="1000"/>
+                        </li>
+                        <li class="list-group-item">
+                            <input type="submit" value="Buy"/>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        {% endfor %}
+    </div>
+{% endblock %}

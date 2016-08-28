@@ -1,0 +1,24 @@
+{% extends ':cabinet:base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    {% if portfolio.portfolioQuotes|length == 0 %}
+        <h2>You have no bought quotes yet.</h2>
+        <p>Visit <a href="{{ url('quotes_index') }}">this page</a> to fix it.</p>
+    {% else %}
+        <h2>
+            Your quotes in {{ portfolio.name }}
+            {% if not portfolio.active %}<em>(inactive)</em>{% endif %}
+        </h2>
+        <ul class="list-group row" style="box-shadow: none !important">
+            {% for quote in portfolio.portfolioQuotes %}
+
+                <li class="list-group-item col-xs-4">
+                    <h3>{{ quote.quote.symbol }}</h3>
+                    <h1>{{ quote.amount }}</h1>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <p>You can <strong>change active portfolio</strong> <a href="{{ url('portfolio_index') }}">here</a></p>
+{% endblock %}

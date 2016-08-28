@@ -1,0 +1,345 @@
+<?php
+
+namespace StockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * QuoteChar
+ *
+ * @ORM\Table(name="quote_char")
+ * @ORM\Entity(repositoryClass="StockBundle\Repository\QuoteCharRepository")
+ */
+class QuoteChar
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @var Quote
+     *
+     * @ORM\ManyToOne(targetEntity="StockBundle\Entity\Quote", inversedBy="chars")
+     * @ORM\JoinColumn(name="quote_id", referencedColumnName="id")
+     */
+    private $quote;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="last_trade_price_only", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $lastTradePriceOnly;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="change_price", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $change;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="open_price", type="decimal", precision=10, scale=2)
+     */
+    private $openPrice;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="close_price", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $closePrice;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="days_high", type="decimal", precision=10, scale=2)
+     */
+    private $daysHigh;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="days_low", type="decimal", precision=10, scale=2)
+     */
+    private $daysLow;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="volume", type="integer")
+     */
+    private $volume;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="adj_close", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $adjClose;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set lastTradePriceOnly
+     *
+     * @param string $lastTradePriceOnly
+     *
+     * @return QuoteChar
+     */
+    public function setLastTradePriceOnly($lastTradePriceOnly)
+    {
+        $this->lastTradePriceOnly = $lastTradePriceOnly;
+
+        return $this;
+    }
+
+    /**
+     * Get lastTradePriceOnly
+     *
+     * @return string
+     */
+    public function getLastTradePriceOnly()
+    {
+        return $this->lastTradePriceOnly;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return QuoteChar
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set change
+     *
+     * @param string $change
+     *
+     * @return QuoteChar
+     */
+    public function setChange($change)
+    {
+        $this->change = $change;
+
+        return $this;
+    }
+
+    /**
+     * Get change
+     *
+     * @return string
+     */
+    public function getChange()
+    {
+        return $this->change;
+    }
+
+    /**
+     * Set openPrice
+     *
+     * @param string $openPrice
+     *
+     * @return QuoteChar
+     */
+    public function setOpenPrice($openPrice)
+    {
+        $this->openPrice = $openPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get openPrice
+     *
+     * @return string
+     */
+    public function getOpenPrice()
+    {
+        return $this->openPrice;
+    }
+
+    /**
+     * Set closePrice
+     *
+     * @param string $closePrice
+     *
+     * @return QuoteChar
+     */
+    public function setClosePrice($closePrice)
+    {
+        $this->closePrice = $closePrice;
+
+        return $this;
+    }
+
+    /**
+     * Get closePrice
+     *
+     * @return string
+     */
+    public function getClosePrice()
+    {
+        return $this->closePrice;
+    }
+
+    /**
+     * Set daysHigh
+     *
+     * @param string $daysHigh
+     *
+     * @return QuoteChar
+     */
+    public function setDaysHigh($daysHigh)
+    {
+        $this->daysHigh = $daysHigh;
+
+        return $this;
+    }
+
+    /**
+     * Get daysHigh
+     *
+     * @return string
+     */
+    public function getDaysHigh()
+    {
+        return $this->daysHigh;
+    }
+
+    /**
+     * Set daysLow
+     *
+     * @param string $daysLow
+     *
+     * @return QuoteChar
+     */
+    public function setDaysLow($daysLow)
+    {
+        $this->daysLow = $daysLow;
+
+        return $this;
+    }
+
+    /**
+     * Get daysLow
+     *
+     * @return string
+     */
+    public function getDaysLow()
+    {
+        return $this->daysLow;
+    }
+
+    /**
+     * Set volume
+     *
+     * @param integer $volume
+     *
+     * @return QuoteChar
+     */
+    public function setVolume($volume)
+    {
+        $this->volume = $volume;
+
+        return $this;
+    }
+
+    /**
+     * Get volume
+     *
+     * @return integer
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * Set adjClose
+     *
+     * @param float $adjClose
+     *
+     * @return QuoteChar
+     */
+    public function setAdjClose($adjClose)
+    {
+        $this->adjClose = $adjClose;
+
+        return $this;
+    }
+
+    /**
+     * Get adjClose
+     *
+     * @return float
+     */
+    public function getAdjClose()
+    {
+        return $this->adjClose;
+    }
+
+    /**
+     * Set quote
+     *
+     * @param \StockBundle\Entity\Quote $quote
+     *
+     * @return QuoteChar
+     */
+    public function setQuote(\StockBundle\Entity\Quote $quote = null)
+    {
+        $this->quote = $quote;
+
+        return $this;
+    }
+
+    /**
+     * Get quote
+     *
+     * @return \StockBundle\Entity\Quote
+     */
+    public function getQuote()
+    {
+        return $this->quote;
+    }
+}

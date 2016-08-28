@@ -1,0 +1,56 @@
+main_page:
+    path: /
+    defaults: { _controller: StockBundle:Default:index }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+quotes_index:
+    path: /quotes
+    defaults: { _controller: StockBundle:Quotes:index }
+
+quotes_buy:
+    path: /quotes/buy
+    defaults: { _controller: StockBundle:Quotes:buy }
+    methods: [POST]
+
+portfolio_index:
+    path:     /portfolio
+    defaults: { _controller: "StockBundle:Portfolio:index" }
+    methods:  GET
+
+portfolio_show:
+    path:     /portfolio/{id}/show
+    defaults: { _controller: "StockBundle:Portfolio:show" }
+    methods:  GET
+
+portfolio_new:
+    path:     /portfolio/new
+    defaults: { _controller: "StockBundle:Portfolio:new" }
+    methods:  [GET, POST]
+
+portfolio_edit:
+    path:     /portfolio/{id}/edit
+    defaults: { _controller: "StockBundle:Portfolio:edit" }
+    methods:  [GET, POST]
+
+portfolio_delete:
+    path:     /portfolio/{id}/delete
+    defaults: { _controller: "StockBundle:Portfolio:delete" }
+    methods:  DELETE
+
+portfolio_activate:
+    path:     /portfolio/{id}/activate
+    defaults: { _controller: "StockBundle:Portfolio:activate" }
+    methods:  GET
+
+portfolio_show_quotes:
+    path:     /portfolio/{id}/quotes
+    defaults: { _controller: "StockBundle:Portfolio:quotesShow" }
+    methods:  GET
+
+portfolio_graph:
+    path: /portfolio/{id}/graph
+    defaults: { _controller: StockBundle:Portfolio:graph }
+
+
