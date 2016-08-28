@@ -1,6 +1,6 @@
 123
 
-- Скопируйте ```parameters.yml.dist``` в ```parameters.yml``` 
+- Скопируйте ```app/config/parameters.yml.dist``` в ```app/config/parameters.yml``` 
 - Выполните ```composer update --no-scripts``
 - Выполните ```vendor/bin/homestead make``
 - Настройте ```Homestead.yml```
